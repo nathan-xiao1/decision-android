@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Decision</string>
+    <string name="yesNoPlaceholder">-</string>
+    <string name="yesNoButton">Yes/No</string>
 </resources>
