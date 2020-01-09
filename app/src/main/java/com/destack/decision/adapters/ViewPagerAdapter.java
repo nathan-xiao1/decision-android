@@ -1,4 +1,4 @@
-package com.destack.decision;
+package com.destack.decision.adapters;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

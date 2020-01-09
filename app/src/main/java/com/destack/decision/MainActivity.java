@@ -5,6 +5,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.destack.decision.adapters.ViewPagerAdapter;
+import com.destack.decision.ui.fragments.ChoiceFragment;
 import com.destack.decision.ui.fragments.YesNoFragment;
 import com.google.android.material.tabs.TabLayout;
 
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         mPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         mPagerAdapter.addFragment(YesNoFragment.newInstance(), "Yes/No");
+        mPagerAdapter.addFragment(ChoiceFragment.newInstance(), "Choice");
 
         viewPager = findViewById(R.id.vpContainer);
         viewPager.setAdapter(mPagerAdapter);

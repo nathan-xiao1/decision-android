@@ -31,7 +31,7 @@ public class YesNoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.yes_no_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_yes_no, container, false);
         constraintLayout = view.findViewById(R.id.main);
         textView = view.findViewById(R.id.yesNoTextView);
         constraintLayout.setOnClickListener(new View.OnClickListener() {
