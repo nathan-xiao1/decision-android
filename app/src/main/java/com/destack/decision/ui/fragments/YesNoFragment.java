@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ public class YesNoFragment extends Fragment {
 
     private boolean yesOrNo;
     private TextView textView;
+    private ConstraintLayout constraintLayout;
 
     public static YesNoFragment newInstance() {
         return new YesNoFragment();
@@ -30,8 +32,9 @@ public class YesNoFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.yes_no_fragment, container, false);
+        constraintLayout = view.findViewById(R.id.main);
         textView = view.findViewById(R.id.yesNoTextView);
-        view.findViewById(R.id.yesNoButton).setOnClickListener(new View.OnClickListener() {
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 generateYesNo();
