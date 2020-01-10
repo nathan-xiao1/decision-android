@@ -8,4 +8,6 @@
     <color name="colorTextSecondary">#757575</color>
     <color name="colorYes">#16A085</color>
     <color name="colorNo">#D81B60</color>
+    <color name="colorLightBackground">#F5F5F5</color>
+    <color name="colorHighlight">#9E9E9E</color>
 </resources>

@@ -4,4 +4,5 @@
     <string name="choiceInputPlaceholder">Enter choice</string>
     <string name="resetButton">Reset</string>
     <string name="decideButton">Decide</string>
+    <string name="addButton">Add Row</string>
 </resources>
