@@ -8,10 +8,21 @@
     android:orientation="vertical"
     tools:context=".ui.fragments.ChoiceFragment">
 
+    <TextView
+        android:id="@+id/helpText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp"
+        android:text="@string/choice_help_text" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        android:layout_weight="1" >
 
         <LinearLayout
             android:id="@+id/listContainer"

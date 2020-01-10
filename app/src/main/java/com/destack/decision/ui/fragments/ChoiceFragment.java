@@ -30,12 +30,13 @@ public class ChoiceFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_choice, container, false);
 
         listContainer = view.findViewById(R.id.listContainer);
-        reset();
+        clear();
 
         // Listener for button to add a new input row
         view.findViewById(R.id.addButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                reset();
                 listContainer.addView(createItem(), listContainer.getChildCount() - 1);
             }
         });
@@ -48,11 +49,11 @@ public class ChoiceFragment extends Fragment {
             }
         });
 
-        // Listener for button to clear and reset inputs
+        // Listener for button to reset and clear inputs
         view.findViewById(R.id.resetButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reset();
+                clear();
             }
         });
 
@@ -74,19 +75,19 @@ public class ChoiceFragment extends Fragment {
         return view;
     }
 
-    /**
-     * Reset container by removing all child views and
-     * adding one default view
-     */
-    private void reset() {
-        listContainer.removeViews(0, listContainer.getChildCount() - 1);
-        listContainer.addView(createItem(), listContainer.getChildCount() - 1);
-    }
 
     /**
      * Clear all highlighted items
      */
     private void clear() {
+        listContainer.removeViews(0, listContainer.getChildCount() - 1);
+        listContainer.addView(createItem(), listContainer.getChildCount() - 1);
+    }
+
+    /**
+     * Reset container - remove all child views except AddButton
+     */
+    private void reset() {
         for (int i = 0; i < listContainer.getChildCount(); i++) {
             listContainer.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.colorLightBackground));
         }
@@ -96,7 +97,7 @@ public class ChoiceFragment extends Fragment {
      * Randomly select an item in the ListView
      */
     private void randomSelect() {
-        clear();
+        reset();
         int count = listContainer.getChildCount() - 1;
         if (count > 0) {
             int randomInt = new Random().nextInt(count);
