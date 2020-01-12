@@ -8,13 +8,13 @@
     tools:context=".ui.fragments.YesNoFragment">
 
     <TextView
-        android:id="@+id/yesNoTextView"
+        android:id="@+id/yes_no_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/yesNoPlaceholder"
+        android:text="@string/yes_no_placeholder"
         android:textColor="@color/colorPrimary"
-        android:textSize="48sp"
+            android:textSize="54sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

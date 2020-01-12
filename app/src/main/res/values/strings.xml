@@ -1,11 +1,21 @@
 <resources>
     <string name="app_name">Decision</string>
-    <string name="yesNoPlaceholder">Click to Start</string>
-    <string name="choiceInputPlaceholder">Enter choice</string>
-    <string name="resetButton">Reset</string>
-    <string name="decideButton">Decide</string>
-    <string name="addButton">Add Row</string>
+
+    <string name="yes_no_placeholder">Tap to Start</string>
+
+    <string name="choice_placeholder">Enter choice</string>
+    <string name="choice_reset_button">Reset</string>
+    <string name="choice_decide_button">Decide</string>
+    <string name="choice_add_button">Add Row</string>
+    <string name="choice_help_text">Enter each choice in a separate input</string>
+
     <string name="menu_item_yes_no">Yes/No</string>
     <string name="menu_item_choice">Choice</string>
-    <string name="choice_help_text">Enter each choice in a separate input</string>
+    <string name="menu_item_rng">RNG</string>
+    <string name="rng_generate">Generate</string>
+    <string name="rng_default_max">10</string>
+    <string name="rng_default_min">1</string>
+    <string name="rng_max_textview">Max</string>
+    <string name="rng_min_textview">Min</string>
+
 </resources>

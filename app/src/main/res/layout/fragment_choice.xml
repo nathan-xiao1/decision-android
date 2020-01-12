@@ -2,19 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/choiceContainer"
+    android:id="@+id/choice_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.fragments.ChoiceFragment">
 
     <TextView
-        android:id="@+id/helpText"
+        android:id="@+id/choice_help_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15sp"
-        android:layout_marginLeft="15sp"
-        android:layout_marginRight="15sp"
+        android:layout_margin="15sp"
         android:text="@string/choice_help_text" />
 
     <ScrollView
@@ -25,17 +23,17 @@
         android:layout_weight="1" >
 
         <LinearLayout
-            android:id="@+id/listContainer"
+            android:id="@+id/choice_list_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <Button
-                android:id="@+id/addButton"
+                android:id="@+id/choice_add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/addButton" />
+                android:text="@string/choice_add_button" />
         </LinearLayout>
 
     </ScrollView>
@@ -47,23 +45,23 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/decideButton"
+            android:id="@+id/choice_decide_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25sp"
             android:layout_marginRight="25sp"
             android:layout_weight="1"
-            android:text="@string/decideButton" />
+            android:text="@string/choice_decide_button" />
 
         <Button
-            android:id="@+id/resetButton"
+            android:id="@+id/choice_reset_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25sp"
             android:layout_marginRight="25sp"
             android:layout_weight="1"
             style="?android:attr/borderlessButtonStyle"
-            android:text="@string/resetButton" />
+            android:text="@string/choice_reset_button" />
     </LinearLayout>
 
 </LinearLayout>

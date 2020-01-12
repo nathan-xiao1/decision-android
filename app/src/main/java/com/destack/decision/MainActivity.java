@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.destack.decision.ui.fragments.ChoiceFragment;
+import com.destack.decision.ui.fragments.RNGFragment;
 import com.destack.decision.ui.fragments.YesNoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -34,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.choiceMenuItem:
                         fragment = new ChoiceFragment();
+                        break;
+                    case R.id.rngMenuItem:
+                        fragment = new RNGFragment();
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().

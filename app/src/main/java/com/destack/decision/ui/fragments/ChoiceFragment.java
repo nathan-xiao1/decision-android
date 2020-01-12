@@ -29,11 +29,11 @@ public class ChoiceFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_choice, container, false);
 
-        listContainer = view.findViewById(R.id.listContainer);
+        listContainer = view.findViewById(R.id.choice_list_container);
         clear();
 
         // Listener for button to add a new input row
-        view.findViewById(R.id.addButton).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.choice_add_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 reset();
@@ -42,7 +42,7 @@ public class ChoiceFragment extends Fragment {
         });
 
         // Listener for button to randomly select an input
-        view.findViewById(R.id.decideButton).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.choice_decide_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 randomSelect();
@@ -50,7 +50,7 @@ public class ChoiceFragment extends Fragment {
         });
 
         // Listener for button to reset and clear inputs
-        view.findViewById(R.id.resetButton).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.choice_reset_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clear();
@@ -65,7 +65,7 @@ public class ChoiceFragment extends Fragment {
      * @return the View of an item
      */
     private View createItem() {
-        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.list_view_item, null);
+        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.choice_item, null);
         view.findViewById(R.id.deleteButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

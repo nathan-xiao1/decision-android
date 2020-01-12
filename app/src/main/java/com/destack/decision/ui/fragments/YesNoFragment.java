@@ -33,7 +33,7 @@ public class YesNoFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_yes_no, container, false);
         constraintLayout = view.findViewById(R.id.main);
-        textView = view.findViewById(R.id.yesNoTextView);
+        textView = view.findViewById(R.id.yes_no_textview);
         constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
