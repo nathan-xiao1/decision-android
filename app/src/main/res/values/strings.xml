@@ -17,5 +17,7 @@
     <string name="rng_default_min">1</string>
     <string name="rng_max_textview">Max</string>
     <string name="rng_min_textview">Min</string>
+    <string name="toggle_open">Open</string>
+    <string name="toggle_close">Close</string>
 
 </resources>

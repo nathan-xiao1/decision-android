@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/yesNoMenuItem"
-        android:icon="@drawable/ic_check_black_24dp"
-        android:title="@string/menu_item_yes_no" />
+    <group
+        android:checkableBehavior="single">
 
-    <item
-        android:id="@+id/choiceMenuItem"
-        android:icon="@drawable/ic_shuffle_black_24dp"
-        android:title="@string/menu_item_choice" />
+        <item
+            android:id="@+id/yesNoMenuItem"
+            android:icon="@drawable/ic_check_black_24dp"
+            android:title="@string/menu_item_yes_no" />
 
-    <item
-        android:id="@+id/rngMenuItem"
-        android:icon="@drawable/ic_numeric"
-        android:title="@string/menu_item_rng"/>
+        <item
+            android:id="@+id/choiceMenuItem"
+            android:icon="@drawable/ic_shuffle_black_24dp"
+            android:title="@string/menu_item_choice" />
+
+        <item
+            android:id="@+id/rngMenuItem"
+            android:icon="@drawable/ic_numeric"
+            android:title="@string/menu_item_rng"/>
+
+    </group>
 
 </menu>
