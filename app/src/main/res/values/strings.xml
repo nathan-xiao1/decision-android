@@ -11,13 +11,22 @@
 
     <string name="menu_item_yes_no">Yes/No</string>
     <string name="menu_item_choice">Choice</string>
-    <string name="menu_item_rng">RNG</string>
+    <string name="menu_item_rng">Random Number</string>
+    <string name="menu_item_rsg">Random Set</string>
+
     <string name="rng_generate">Generate</string>
     <string name="rng_default_max">10</string>
     <string name="rng_default_min">1</string>
     <string name="rng_max_textview">Max</string>
     <string name="rng_min_textview">Min</string>
+
     <string name="toggle_open">Open</string>
     <string name="toggle_close">Close</string>
+
+
+    <string name="rsg_quantity_textview">Quantity</string>
+    <string name="rsg_default_quantity">1</string>
+    <string name="rsg_seperator_textview">Seperator</string>
+    <string name="rsg_default_seperator" />
 
 </resources>

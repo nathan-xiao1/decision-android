@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/rng_default_max"
+            android:textIsSelectable="true"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textSize="72sp" />
