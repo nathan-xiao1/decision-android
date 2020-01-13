@@ -67,8 +67,7 @@ public class YesNoFragment extends Fragment {
 
     private void displayResult(TextView textView) {
         textView.setText(yesOrNo ? "Yes" : "No");
-        textView.setTextColor(getResources().getColor(R.color.white));
-        layout_container.setBackgroundColor(yesOrNo ? getResources().getColor(R.color.colorYes) :
+        textView.setTextColor(yesOrNo ? getResources().getColor(R.color.colorYes) :
                 getResources().getColor(R.color.colorNo));
     }
 

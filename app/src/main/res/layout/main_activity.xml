@@ -21,7 +21,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/menu_header"
-        app:itemIconPadding="24sp"
+        app:itemIconPadding="24dp"
         app:menu="@menu/bottom_navigation_menu">
 
     </com.google.android.material.navigation.NavigationView>

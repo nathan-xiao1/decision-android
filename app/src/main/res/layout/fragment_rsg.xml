@@ -18,10 +18,10 @@
         <TextView
             android:id="@+id/rsg_textview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:textIsSelectable="true"
-            android:text="1"
+            android:text="@string/rng_default_max"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textSize="54sp" />
@@ -146,7 +146,7 @@
         android:id="@+id/rsg_generate_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15sp"
+        android:layout_margin="15dp"
         android:text="@string/rng_generate" />
 
 </LinearLayout>

@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.destack.decision.R;
@@ -16,6 +18,7 @@ import java.util.Random;
 
 public class ChoiceFragment extends Fragment {
 
+    private TextView resultTextView;
     private LinearLayout listContainer;
 
     public static ChoiceFragment newInstance() {
@@ -30,13 +33,13 @@ public class ChoiceFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_choice, container, false);
 
         listContainer = view.findViewById(R.id.choice_list_container);
-        clear();
+        resultTextView = view.findViewById(R.id.choice_result_textview);
+        reset();
 
         // Listener for button to add a new input row
         view.findViewById(R.id.choice_add_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reset();
                 listContainer.addView(createItem(), listContainer.getChildCount() - 1);
             }
         });
@@ -49,11 +52,11 @@ public class ChoiceFragment extends Fragment {
             }
         });
 
-        // Listener for button to reset and clear inputs
+        // Listener for button to reset and reset inputs
         view.findViewById(R.id.choice_reset_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clear();
+                reset();
             }
         });
 
@@ -77,32 +80,24 @@ public class ChoiceFragment extends Fragment {
 
 
     /**
-     * Clear all highlighted items
-     */
-    private void clear() {
-        listContainer.removeViews(0, listContainer.getChildCount() - 1);
-        listContainer.addView(createItem(), listContainer.getChildCount() - 1);
-    }
-
-    /**
-     * Reset container - remove all child views except AddButton
+     * Reset to initial state
      */
     private void reset() {
-        for (int i = 0; i < listContainer.getChildCount(); i++) {
-            listContainer.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.colorLightBackground));
-        }
+        resultTextView.setVisibility(View.GONE);
+        listContainer.removeViews(0, listContainer.getChildCount() - 1);
+        listContainer.addView(createItem(), listContainer.getChildCount() - 1);
     }
 
     /**
      * Randomly select an item in the ListView
      */
     private void randomSelect() {
-        reset();
         int count = listContainer.getChildCount() - 1;
         if (count > 0) {
             int randomInt = new Random().nextInt(count);
-            View randomView = listContainer.getChildAt(randomInt);
-            randomView.setBackgroundColor(getResources().getColor(R.color.colorHighlight));
+            EditText decisionInput = listContainer.getChildAt(randomInt).findViewById(R.id.decisionInput);
+            resultTextView.setVisibility(View.VISIBLE);
+            resultTextView.setText(decisionInput.getText());
         } else {
             Toast.makeText(getActivity(), "Enter at-least one choice", Toast.LENGTH_SHORT).show();
         }
