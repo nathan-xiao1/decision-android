@@ -4,12 +4,13 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.destack.decision.R;
@@ -19,8 +20,9 @@ import java.util.Random;
 public class YesNoFragment extends Fragment {
 
     private boolean yesOrNo;
-    private TextView textView;
-    private ConstraintLayout constraintLayout;
+    private TextView resultTextView;
+    private Button generateButton;
+    private LinearLayout layout_container;
 
     public static YesNoFragment newInstance() {
         return new YesNoFragment();
@@ -32,19 +34,21 @@ public class YesNoFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_yes_no, container, false);
-        constraintLayout = view.findViewById(R.id.main);
-        textView = view.findViewById(R.id.yes_no_textview);
-        constraintLayout.setOnClickListener(new View.OnClickListener() {
+        generateButton = view.findViewById(R.id.yes_no_generate_button);
+        resultTextView = view.findViewById(R.id.yes_no_textview);
+        layout_container = view.findViewById(R.id.yes_no_container);
+
+        generateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 generateYesNo();
-                displayResult(textView);
+                displayResult(resultTextView);
             }
         });
 
         if (savedInstanceState != null) {
             yesOrNo = savedInstanceState.getBoolean("yesOrNo");
-            displayResult(textView);
+            displayResult(resultTextView);
         }
 
         return view;
@@ -64,7 +68,7 @@ public class YesNoFragment extends Fragment {
     private void displayResult(TextView textView) {
         textView.setText(yesOrNo ? "Yes" : "No");
         textView.setTextColor(getResources().getColor(R.color.white));
-        constraintLayout.setBackgroundColor(yesOrNo ? getResources().getColor(R.color.colorYes) :
+        layout_container.setBackgroundColor(yesOrNo ? getResources().getColor(R.color.colorYes) :
                 getResources().getColor(R.color.colorNo));
     }
 

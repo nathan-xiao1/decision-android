@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Decision</string>
 
-    <string name="yes_no_placeholder">Tap to Start</string>
+    <string name="yes_no_placeholder">-</string>
 
     <string name="choice_placeholder">Enter choice</string>
     <string name="choice_reset_button">Reset</string>

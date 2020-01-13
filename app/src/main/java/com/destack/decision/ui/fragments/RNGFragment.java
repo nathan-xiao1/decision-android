@@ -31,7 +31,7 @@ public class RNGFragment extends Fragment {
         minEditText = view.findViewById(R.id.rng_min_edittext);
         maxEditText = view.findViewById(R.id.rng_max_edittext);
 
-        // Add listener to
+        // Add listener to the generate button
         view.findViewById(R.id.rng_generate_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,8 +43,8 @@ public class RNGFragment extends Fragment {
     }
 
     /**
-     * Generate a random number between
-     * @return
+     * Generate a random number between the min and max inclusive
+     * @return a int
      */
     private int getRandomNumber() {
         int min = Integer.parseInt(minEditText.getText().toString());
