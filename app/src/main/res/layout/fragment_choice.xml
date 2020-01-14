@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:animateLayoutChanges="true"
     tools:context=".ui.fragments.ChoiceFragment">
 
     <TextView
@@ -37,7 +38,8 @@
             android:id="@+id/choice_list_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:animateLayoutChanges="true">
 
             <Button
                 android:id="@+id/choice_add_button"
@@ -59,18 +61,22 @@
             android:id="@+id/choice_decide_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
+            android:textSize="@dimen/primary_button_text_size"
+            android:padding="@dimen/primary_button_padding"
             android:text="@string/choice_decide_button" />
 
         <Button
             android:id="@+id/choice_reset_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
+            android:textSize="@dimen/primary_button_text_size"
+            android:padding="@dimen/primary_button_padding"
             style="?android:attr/borderlessButtonStyle"
             android:text="@string/choice_reset_button" />
     </LinearLayout>

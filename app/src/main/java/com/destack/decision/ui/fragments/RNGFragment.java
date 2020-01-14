@@ -1,5 +1,6 @@
 package com.destack.decision.ui.fragments;
 
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -35,7 +36,8 @@ public class RNGFragment extends Fragment {
         view.findViewById(R.id.rng_generate_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resultTextView.setText(String.valueOf(getRandomNumber()));
+                int current = Integer.valueOf(resultTextView.getText().toString());
+                startCountAnimation(resultTextView, current, getRandomNumber());
             }
         });
 
@@ -55,6 +57,23 @@ public class RNGFragment extends Fragment {
             max = temp;
         }
         return new Random().nextInt(max - min + 1) + min;
+    }
+
+    /**
+     * Set text and play 'counting' animation
+     * @param textView the TextView for the text
+     * @param start the initial/starting value
+     * @param end the final/ending value
+     */
+    private void startCountAnimation(final TextView textView, int start, int end) {
+        ValueAnimator animator = ValueAnimator.ofInt(start, end);
+        animator.setDuration(250);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            public void onAnimationUpdate(ValueAnimator animation) {
+                textView.setText(animation.getAnimatedValue().toString());
+            }
+        });
+        animator.start();
     }
 
 }

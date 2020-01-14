@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -22,7 +24,9 @@ public class RSGFragment extends Fragment {
     private EditText minEditText;
     private EditText maxEditText;
     private EditText quantityEditText;
-    private EditText seperatorEditText;
+    private EditText separatorEditText;
+    private Animation fadeIn;
+    private Animation fadeOut;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,7 +39,11 @@ public class RSGFragment extends Fragment {
         minEditText = view.findViewById(R.id.rsg_min_edittext);
         maxEditText = view.findViewById(R.id.rsg_max_edittext);
         quantityEditText = view.findViewById(R.id.rsg_quantity_edittext);
-        seperatorEditText = view.findViewById(R.id.rsg_seperator_edittext);
+        separatorEditText = view.findViewById(R.id.rsg_seperator_edittext);
+
+        // Load the fading animations
+        fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in);
+        fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.fade_out);
 
         view.findViewById(R.id.rsg_generate_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,12 +56,15 @@ public class RSGFragment extends Fragment {
 
     }
 
+    /**
+     *  Get a random set and display it
+     */
     private void generate() {
 
         int min = Integer.parseInt(minEditText.getText().toString());
         int max = Integer.parseInt(maxEditText.getText().toString());
         int quantity = Integer.parseInt(quantityEditText.getText().toString());
-        String seperator = seperatorEditText.getText().toString();
+        String seperator = separatorEditText.getText().toString();
 
         // Swap if min is greater than max
         if (min > max) {
@@ -62,17 +73,27 @@ public class RSGFragment extends Fragment {
             max = tmp;
         }
 
-        if (quantity > max) {
-            quantity = max;
+        // Limit the quantity to the max count of unique numbers
+        if (quantity > max - min) {
+            quantity = max - min;
         }
 
         List<Integer> setList = generateRandomisedSet(min, max);
         String result = getResultString(setList, quantity, seperator);
 
+        // Play animation and change the text
+        resultTextView.startAnimation(fadeOut);
         resultTextView.setText(result);
+        resultTextView.startAnimation(fadeIn);
 
     }
 
+    /**
+     * Generate a randomised number set between min and max (inclusive)
+     * @param min the lower bound value
+     * @param max the upper bound value
+     * @return a List of int
+     */
     private List<Integer> generateRandomisedSet(int min, int max) {
         List<Integer> setList = new ArrayList<>();
         for (int i = min; i <= max; i++) {
@@ -82,6 +103,13 @@ public class RSGFragment extends Fragment {
         return setList;
     }
 
+    /**
+     * Convert a List of integer into a formatted string format
+     * @param setList the List of int to be converted
+     * @param quantity the number of int to convert
+     * @param seperator a String to seperate each int
+     * @return a formatted String
+     */
     private String getResultString(List<Integer> setList, int quantity, String seperator) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < quantity; i++) {

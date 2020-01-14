@@ -11,7 +11,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="25dp"
         android:fillViewport="true"
         android:layout_weight="1">
 
@@ -24,7 +23,7 @@
             android:text="@string/rng_default_max"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
-            android:textSize="54sp" />
+            android:textSize="62sp" />
 
     </ScrollView>
 
@@ -50,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/rng_min_textview"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/secondary_text_size" />
 
                 <EditText
                     android:id="@+id/rsg_max_edittext"
@@ -63,7 +62,7 @@
                     android:inputType="number"
                     android:text="@string/rng_default_max"
                     android:textAlignment="center"
-                    android:textSize="30sp" />
+                    android:textSize="@dimen/input_text_size" />
 
                 <TextView
                     android:id="@+id/rsg_max_textview"
@@ -71,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/rng_max_textview"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/secondary_text_size" />
 
                 <EditText
                     android:id="@+id/rsg_min_edittext"
@@ -84,7 +83,7 @@
                     android:inputType="number"
                     android:text="@string/rng_default_min"
                     android:textAlignment="center"
-                    android:textSize="30sp" />
+                    android:textSize="@dimen/input_text_size" />
 
             </LinearLayout>
 
@@ -100,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/rsg_quantity_textview"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/secondary_text_size" />
 
                 <EditText
                     android:id="@+id/rsg_quantity_edittext"
@@ -113,7 +112,7 @@
                     android:inputType="number"
                     android:text="@string/rsg_default_quantity"
                     android:textAlignment="center"
-                    android:textSize="30sp" />
+                    android:textSize="@dimen/input_text_size" />
 
                 <TextView
                     android:id="@+id/rsg_seperator_textview"
@@ -121,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/rsg_seperator_textview"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/secondary_text_size" />
 
                 <EditText
                     android:id="@+id/rsg_seperator_edittext"
@@ -134,7 +133,7 @@
                     android:text="@string/rsg_default_seperator"
                     android:textAlignment="center"
                     android:maxLength="10"
-                    android:textSize="30sp" />
+                    android:textSize="@dimen/input_text_size" />
 
             </LinearLayout>
 
@@ -147,6 +146,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
+        android:textSize="@dimen/primary_button_text_size"
+        android:padding="@dimen/primary_button_padding"
         android:text="@string/rng_generate" />
 
 </LinearLayout>

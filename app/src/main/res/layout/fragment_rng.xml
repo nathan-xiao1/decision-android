@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/rng_min_textview"
-            android:textSize="18sp" />
+            android:textSize="@dimen/secondary_text_size" />
 
         <EditText
             android:id="@+id/rng_min_edittext"
@@ -50,7 +50,7 @@
             android:inputType="number"
             android:text="@string/rng_default_min"
             android:textAlignment="center"
-            android:textSize="30sp"
+            android:textSize="@dimen/input_text_size"
             android:importantForAutofill="no" />
 
         <TextView
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/rng_max_textview"
-            android:textSize="18sp" />
+            android:textSize="@dimen/secondary_text_size" />
 
         <EditText
             android:id="@+id/rng_max_edittext"
@@ -71,7 +71,7 @@
             android:inputType="number"
             android:text="@string/rng_default_max"
             android:textAlignment="center"
-            android:textSize="30sp"
+            android:textSize="@dimen/input_text_size"
             android:importantForAutofill="no"/>
 
     </LinearLayout>
@@ -80,7 +80,9 @@
         android:id="@+id/rng_generate_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/primary_button_text_size"
         android:layout_margin="15dp"
+        android:padding="@dimen/primary_button_padding"
         android:text="@string/rng_generate" />
 
 </LinearLayout>
