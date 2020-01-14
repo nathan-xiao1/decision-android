@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class ChoiceFragment extends Fragment {
 
     private TextView resultTextView;
     private LinearLayout listContainer;
+    private ScrollView listScrollView;
 
     public static ChoiceFragment newInstance() {
         return new ChoiceFragment();
@@ -34,6 +36,7 @@ public class ChoiceFragment extends Fragment {
 
         listContainer = view.findViewById(R.id.choice_list_container);
         resultTextView = view.findViewById(R.id.choice_result_textview);
+        listScrollView = view.findViewById(R.id.choice_main_scrollview);
         reset();
 
         // Listener for button to add a new input row
@@ -41,6 +44,7 @@ public class ChoiceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 listContainer.addView(createItem(), listContainer.getChildCount() - 1);
+                scrollDown();
             }
         });
 
@@ -61,6 +65,15 @@ public class ChoiceFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void scrollDown() {
+        listScrollView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                listScrollView.fullScroll(View.FOCUS_DOWN);
+            }
+        }, 300);
     }
 
     /**
@@ -97,7 +110,8 @@ public class ChoiceFragment extends Fragment {
             int randomInt = new Random().nextInt(count);
             EditText decisionInput = listContainer.getChildAt(randomInt).findViewById(R.id.decisionInput);
             resultTextView.setVisibility(View.VISIBLE);
-            resultTextView.setText(decisionInput.getText());
+            resultTextView.setText(decisionInput.getText().toString());
+            listScrollView.smoothScrollTo(0,0);
         } else {
             Toast.makeText(getActivity(), "Enter at-least one choice", Toast.LENGTH_SHORT).show();
         }

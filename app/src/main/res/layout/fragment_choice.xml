@@ -9,25 +9,8 @@
     android:animateLayoutChanges="true"
     tools:context=".ui.fragments.ChoiceFragment">
 
-    <TextView
-        android:id="@+id/choice_result_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:visibility="gone"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="72sp" />
-
-    <TextView
-        android:id="@+id/choice_help_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="@string/choice_help_text" />
-
     <ScrollView
+        android:id="@+id/choice_main_scrollview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginLeft="5dp"
@@ -35,18 +18,45 @@
         android:layout_weight="1" >
 
         <LinearLayout
-            android:id="@+id/choice_list_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:animateLayoutChanges="true">
+            android:animateLayoutChanges="true" >
 
-            <Button
-                android:id="@+id/choice_add_button"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/choice_result_textview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="72sp" />
+
+            <TextView
+                android:id="@+id/choice_help_textview"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/choice_add_button" />
+                android:layout_margin="15dp"
+                android:text="@string/choice_help_text" />
+
+            <LinearLayout
+                android:id="@+id/choice_list_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:animateLayoutChanges="true" >
+
+                <Button
+                    android:id="@+id/choice_add_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/choice_add_button" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>
