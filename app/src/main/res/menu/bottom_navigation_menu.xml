@@ -17,6 +17,11 @@
                 android:icon="@drawable/ic_shuffle_black_24dp"
                 android:title="@string/menu_item_choice" />
 
+            <item
+                android:id="@+id/timeMenuItem"
+                android:icon="@drawable/ic_access_time_black_24dp"
+                android:title="@string/menu_item_time" />
+
         </group>
 
     </item>
