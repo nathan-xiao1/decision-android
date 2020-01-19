@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -23,14 +25,29 @@ import java.util.Random;
 
 public class TimeFragment extends Fragment {
 
-    private final DateFormat format = new SimpleDateFormat("HH:mm", Locale.getDefault());
+    private final DateFormat format12Hr = new SimpleDateFormat("hh:mm a", Locale.getDefault());
+    private final DateFormat format24Hr = new SimpleDateFormat("HH:mm", Locale.getDefault());
+    private final DateFormat formatHour = new SimpleDateFormat("HH", Locale.getDefault());
+    private final DateFormat formatMinute = new SimpleDateFormat("mm", Locale.getDefault());
+
     private EditText minTimeEditText;
     private EditText maxTimeEditText;
     private TextView resultTextView;
 
+    private Date min;
+    private Date max;
+    private Date result;
+
+    private boolean hr12 = false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        // Set the default times
+        min = get24HrTime("00:00");
+        max = get24HrTime("23:59");
+        result = min;
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_time, container, false);
@@ -44,9 +61,10 @@ public class TimeFragment extends Fragment {
                 new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        minTimeEditText.setText(String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute));
+                        min = get24HrTime(hourOfDay + ":" + minute);
+                        minTimeEditText.setText(getResultString(min));
                     }
-                }, getHour(minTimeEditText), getMinute(minTimeEditText), true).show();
+                }, getHour(min), getMinute(min), !hr12).show();
             }
         });
 
@@ -57,9 +75,18 @@ public class TimeFragment extends Fragment {
                 new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        maxTimeEditText.setText(String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute));
+                        max = get24HrTime(hourOfDay + ":" + minute);
+                        maxTimeEditText.setText(getResultString(max));
                     }
-                }, getHour(maxTimeEditText), getMinute(maxTimeEditText), true).show();
+                }, getHour(max), getMinute(max), !hr12).show();
+            }
+        });
+
+        CheckBox modeCheckBox = view.findViewById(R.id.time_mode_checkbox);
+        modeCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                switchMode(isChecked);
             }
         });
 
@@ -73,18 +100,26 @@ public class TimeFragment extends Fragment {
         return view;
     }
 
-    private int getHour(EditText editText) {
-        return Integer.valueOf(editText.getText().toString().split(":")[0]);
+    private void switchMode(boolean isChecked) {
+        hr12 = isChecked;
+        minTimeEditText.setText(getResultString(min));
+        maxTimeEditText.setText(getResultString(max));
+        resultTextView.setText(getResultString(result));
     }
 
-    private int getMinute(EditText editText) {
-        return Integer.valueOf(editText.getText().toString().split(":")[1]);
+    private String getResultString(Date result) {
+        return hr12 ? format12Hr.format(result) : format24Hr.format(result);
+    }
+
+    private int getHour(Date date) {
+        return Integer.valueOf(formatHour.format(date));
+    }
+
+    private int getMinute(Date date) {
+        return Integer.valueOf(formatMinute.format(date));
     }
 
     private void generate() {
-        Date min = getTime(minTimeEditText.getText().toString());
-        Date max = getTime(maxTimeEditText.getText().toString());
-
         // Swap min and max if min > max
         if (min.compareTo(max) > 0) {
             Date temp = min;
@@ -93,14 +128,13 @@ public class TimeFragment extends Fragment {
         }
 
         int difference = (int) (max.getTime() - min.getTime());
-        Date result = new Date(min.getTime() + new Random().nextInt(difference + 60000));
-        resultTextView.setText(format.format(result));
+        result = new Date(min.getTime() + new Random().nextInt(difference + 60000));
+        resultTextView.setText(getResultString(result));
     }
 
-
-    private Date getTime(String time) {
+    private Date get24HrTime(String time) {
         try {
-            return format.parse(time);
+            return format24Hr.parse(time);
         } catch (ParseException e) {
             e.printStackTrace();
             return null;

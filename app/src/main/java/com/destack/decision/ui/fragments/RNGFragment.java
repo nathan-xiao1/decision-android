@@ -67,7 +67,7 @@ public class RNGFragment extends Fragment {
      */
     private void startCountAnimation(final TextView textView, int start, int end) {
         ValueAnimator animator = ValueAnimator.ofInt(start, end);
-        animator.setDuration(250);
+        animator.setDuration(150);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             public void onAnimationUpdate(ValueAnimator animation) {
                 textView.setText(animation.getAnimatedValue().toString());
