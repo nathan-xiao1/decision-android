@@ -1,48 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:title="">
+    <group android:checkableBehavior="single">
 
-        <group
-            android:checkableBehavior="single">
+        <item
+            android:id="@+id/yesNoMenuItem"
+            android:icon="@drawable/ic_check_black_24dp"
+            android:title="@string/menu_item_yes_no" />
 
-            <item
-                android:id="@+id/yesNoMenuItem"
-                android:icon="@drawable/ic_check_black_24dp"
-                android:title="@string/menu_item_yes_no" />
+        <item
+            android:id="@+id/choiceMenuItem"
+            android:icon="@drawable/ic_shuffle_black_24dp"
+            android:title="@string/menu_item_choice" />
 
-            <item
-                android:id="@+id/choiceMenuItem"
-                android:icon="@drawable/ic_shuffle_black_24dp"
-                android:title="@string/menu_item_choice" />
+        <item
+            android:id="@+id/timeMenuItem"
+            android:icon="@drawable/ic_access_time_black_24dp"
+            android:title="@string/menu_item_time" />
 
-            <item
-                android:id="@+id/timeMenuItem"
-                android:icon="@drawable/ic_access_time_black_24dp"
-                android:title="@string/menu_item_time" />
+        <item android:title="Numbers">
 
-        </group>
+            <menu>
 
-    </item>
+                <group android:checkableBehavior="single">
 
-    <item
-        android:title="Numbers">
+                    <item
+                        android:id="@+id/rngMenuItem"
+                        android:icon="@drawable/ic_numeric_10_box_outline"
+                        android:title="@string/menu_item_rng" />
 
-        <menu>
+                    <item
+                        android:id="@+id/rsgMenuItem"
+                        android:icon="@drawable/ic_numeric_10_box_multiple_outline"
+                        android:title="@string/menu_item_rsg" />
 
-            <item
-                android:id="@+id/rngMenuItem"
-                android:icon="@drawable/ic_numeric_10_box_outline"
-                android:title="@string/menu_item_rng"/>
+                </group>
 
-            <item
-                android:id="@+id/rsgMenuItem"
-                android:icon="@drawable/ic_numeric_10_box_multiple_outline"
-                android:title="@string/menu_item_rsg"/>
+            </menu>
 
-        </menu>
+        </item>
 
-    </item>
+    </group>
 
 </menu>

@@ -3,6 +3,7 @@ package com.destack.decision.ui.fragments;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -41,8 +42,17 @@ public class TimeFragment extends Fragment {
     private boolean hr12 = false;
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getActivity().setTitle(R.string.time_title);
+    }
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
 
         // Set the default times
         min = get24HrTime("00:00");

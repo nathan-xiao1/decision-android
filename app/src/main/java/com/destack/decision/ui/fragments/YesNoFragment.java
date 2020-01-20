@@ -1,5 +1,7 @@
 package com.destack.decision.ui.fragments;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,13 @@ public class YesNoFragment extends Fragment {
         return new YesNoFragment();
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getActivity().setTitle(R.string.yes_no_title);
+    }
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -60,11 +69,6 @@ public class YesNoFragment extends Fragment {
         }
 
         return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
     }
 
     @Override

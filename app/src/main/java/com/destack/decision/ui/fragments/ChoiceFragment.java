@@ -2,6 +2,7 @@ package com.destack.decision.ui.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -25,6 +26,12 @@ public class ChoiceFragment extends Fragment {
 
     public static ChoiceFragment newInstance() {
         return new ChoiceFragment();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getActivity().setTitle(R.string.choice_title);
     }
 
     @Override

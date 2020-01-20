@@ -3,11 +3,14 @@ package com.destack.decision.ui.fragments;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,12 +23,25 @@ public class RNGFragment extends Fragment {
     private TextView resultTextView;
     private EditText minEditText;
     private EditText maxEditText;
+    private Animation fadeIn;
+    private Animation fadeOut;
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getActivity().setTitle(R.string.rng_title);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_rng, container, false);
+
+        // Load the fading animations
+        fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in);
+        fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.fade_out);
 
         // Store the relevant reference
         resultTextView = view.findViewById(R.id.rng_result_textview);
@@ -37,7 +53,8 @@ public class RNGFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 int current = Integer.valueOf(resultTextView.getText().toString());
-                startCountAnimation(resultTextView, current, getRandomNumber());
+                //startCountAnimation(resultTextView, current, getRandomNumber());
+                startFadeAnimation(resultTextView, String.valueOf(getRandomNumber()));
             }
         });
 
@@ -60,7 +77,7 @@ public class RNGFragment extends Fragment {
     }
 
     /**
-     * Set text and play 'counting' animation
+     * Set text and play 'counting' Animation
      * @param textView the TextView for the text
      * @param start the initial/starting value
      * @param end the final/ending value
@@ -74,6 +91,12 @@ public class RNGFragment extends Fragment {
             }
         });
         animator.start();
+    }
+
+    private void startFadeAnimation(TextView textView, String result) {
+        textView.startAnimation(fadeOut);
+        textView.setText(result);
+        textView.startAnimation(fadeIn);
     }
 
 }

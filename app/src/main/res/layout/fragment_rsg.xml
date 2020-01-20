@@ -22,7 +22,7 @@
             android:textIsSelectable="true"
             android:text="@string/rsg_default_text"
             android:textAlignment="center"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimary"
             android:textSize="62sp" />
 
     </ScrollView>
