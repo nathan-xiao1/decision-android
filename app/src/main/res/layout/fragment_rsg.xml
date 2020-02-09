@@ -52,7 +52,7 @@
                     android:textSize="@dimen/secondary_text_size" />
 
                 <EditText
-                    android:id="@+id/rsg_max_edittext"
+                    android:id="@+id/rsg_min_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -60,7 +60,7 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="number"
-                    android:text="@string/rng_default_max"
+                    android:text="@string/rng_default_min"
                     android:textAlignment="center"
                     android:textSize="@dimen/input_text_size" />
 
@@ -73,7 +73,7 @@
                     android:textSize="@dimen/secondary_text_size" />
 
                 <EditText
-                    android:id="@+id/rsg_min_edittext"
+                    android:id="@+id/rsg_max_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -81,7 +81,7 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="number"
-                    android:text="@string/rng_default_min"
+                    android:text="@string/rng_default_max"
                     android:textAlignment="center"
                     android:textSize="@dimen/input_text_size" />
 
