@@ -31,7 +31,7 @@
     <string name="rsg_quantity_textview">Quantity</string>
     <string name="rsg_default_quantity">5</string>
     <string name="rsg_seperator_textview">Seperator</string>
-    <string name="rsg_default_seperator" />
+    <string name="rsg_default_seperator">,</string>
     <string name="rsg_default_text">1\n2\n3\n4\n5</string>
 
     <string name="time_title">Random Time</string>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,11 @@ import android.widget.TextView;
 
 import com.destack.decision.R;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class RSGFragment extends Fragment {
 
@@ -28,6 +31,7 @@ public class RSGFragment extends Fragment {
     private EditText separatorEditText;
     private Animation fadeIn;
     private Animation fadeOut;
+    private int quantityMax = 100;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -56,7 +60,11 @@ public class RSGFragment extends Fragment {
         view.findViewById(R.id.rsg_generate_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                generate();
+                verifyInput();
+                resultTextView.startAnimation(fadeOut);
+                resultTextView.setText(generate());
+                resultTextView.startAnimation(fadeIn);
+
             }
         });
 
@@ -65,34 +73,46 @@ public class RSGFragment extends Fragment {
     }
 
     /**
+     *  Check if input values are within range of a long's min and max
+     */
+    private void verifyInput() {
+        BigInteger min = new BigInteger(minEditText.getText().toString());
+        BigInteger max = new BigInteger(maxEditText.getText().toString());
+        if (max.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
+            maxEditText.setText(String.valueOf(Long.MAX_VALUE));
+        }
+        if (min.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
+            minEditText.setText(String.valueOf(Long.MAX_VALUE));
+        }
+        if (Integer.parseInt(quantityEditText.getText().toString()) > quantityMax) {
+            quantityEditText.setText(String.valueOf(quantityMax));
+        }
+    }
+
+    /**
      *  Get a random set and display it
      */
-    private void generate() {
+    private String generate() {
 
-        int min = Integer.parseInt(minEditText.getText().toString());
-        int max = Integer.parseInt(maxEditText.getText().toString());
+        long min = Long.parseLong(minEditText.getText().toString());
+        long max = Long.parseLong(maxEditText.getText().toString()) + 1;
         int quantity = Integer.parseInt(quantityEditText.getText().toString());
         String seperator = separatorEditText.getText().toString();
 
         // Swap if min is greater than max
         if (min > max) {
-            int tmp = min;
+            long tmp = min;
             min = max;
             max = tmp;
         }
 
         // Limit the quantity to the max count of unique numbers
         if (quantity > max - min) {
-            quantity = max - min;
+            quantity = (int) (max - min);
         }
 
-        List<Integer> setList = generateRandomisedSet(min, max);
-        String result = getResultString(setList, quantity, seperator);
-
-        // Play Animation and change the text
-        resultTextView.startAnimation(fadeOut);
-        resultTextView.setText(result);
-        resultTextView.startAnimation(fadeIn);
+        List<Long> setList = generateRandomisedSet(min, max, quantity);
+        return getResultString(setList, quantity, seperator);
 
     }
 
@@ -102,12 +122,17 @@ public class RSGFragment extends Fragment {
      * @param max the upper bound value
      * @return a List of int
      */
-    private List<Integer> generateRandomisedSet(int min, int max) {
-        List<Integer> setList = new ArrayList<>();
-        for (int i = min; i <= max; i++) {
-            setList.add(i);
+    private List<Long> generateRandomisedSet(long min, long max, int quantity) {
+        int i = 0;
+        List<Long> setList = new ArrayList<>();
+        while (i < quantity) {
+            long rand = min + ((long) (new Random().nextDouble() * (max - min)));
+            if (!setList.contains(rand)) {
+                setList.add(rand);
+                i++;
+            }
         }
-        Collections.shuffle(setList);
+//        Collections.shuffle(setList);
         return setList;
     }
 
@@ -118,11 +143,12 @@ public class RSGFragment extends Fragment {
      * @param seperator a String to seperate each int
      * @return a formatted String
      */
-    private String getResultString(List<Integer> setList, int quantity, String seperator) {
+    private String getResultString(List<Long> setList, int quantity, String seperator) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < quantity; i++) {
+        for (int i = 0; i < quantity - 1; i++) {
             stringBuilder.append(setList.get(i)).append(seperator).append("\n");
         }
+        stringBuilder.append(setList.get(setList.size() - 1));
         return stringBuilder.toString().trim();
     }
 }
