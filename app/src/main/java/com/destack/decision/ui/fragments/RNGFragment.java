@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.destack.decision.R;
 
+import java.math.BigInteger;
 import java.util.Random;
 
 public class RNGFragment extends Fragment {
@@ -52,8 +53,9 @@ public class RNGFragment extends Fragment {
         view.findViewById(R.id.rng_generate_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int current = Integer.valueOf(resultTextView.getText().toString());
+                //int current = Integer.valueOf(resultTextView.getText().toString());
                 //startCountAnimation(resultTextView, current, getRandomNumber());
+                verifyInput();
                 startFadeAnimation(resultTextView, String.valueOf(getRandomNumber()));
             }
         });
@@ -62,18 +64,32 @@ public class RNGFragment extends Fragment {
     }
 
     /**
+     *  Check if input values are within range of a long's min and max
+     */
+    private void verifyInput() {
+        BigInteger min = new BigInteger(minEditText.getText().toString());
+        BigInteger max = new BigInteger(maxEditText.getText().toString());
+        if (max.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
+            maxEditText.setText(String.valueOf(Long.MAX_VALUE));
+        }
+        if (min.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
+            minEditText.setText(String.valueOf(Long.MAX_VALUE));
+        }
+    }
+
+    /**
      * Generate a random number between the min and max inclusive
      * @return a int
      */
-    private int getRandomNumber() {
-        int min = Integer.parseInt(minEditText.getText().toString());
-        int max = Integer.parseInt(maxEditText.getText().toString());
+    private long getRandomNumber() {
+        long min = Long.parseLong(minEditText.getText().toString());
+        long max = Long.parseLong(maxEditText.getText().toString()) + 1;
         if (min > max) {
-            int temp = min;
+            long temp = min;
             min = max;
             max = temp;
         }
-        return new Random().nextInt(max - min + 1) + min;
+        return min + ((long) (new Random().nextDouble() * (max - min)));
     }
 
     /**
@@ -93,6 +109,11 @@ public class RNGFragment extends Fragment {
         animator.start();
     }
 
+    /**
+     * Play text fade animation
+     * @param textView the TextView
+     * @param result the text to be displayed
+     */
     private void startFadeAnimation(TextView textView, String result) {
         textView.startAnimation(fadeOut);
         textView.setText(result);
