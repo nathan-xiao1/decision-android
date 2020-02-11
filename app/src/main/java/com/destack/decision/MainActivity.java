@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.destack.decision.ui.fragments.ChoiceFragment;
+import com.destack.decision.ui.fragments.DateFragment;
 import com.destack.decision.ui.fragments.RNGFragment;
 import com.destack.decision.ui.fragments.RSGFragment;
 import com.destack.decision.ui.fragments.TimeFragment;
@@ -79,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.timeMenuItem:
                 fragment = new TimeFragment();
+                break;
+            case R.id.dateMenuItem:
+                fragment = new DateFragment();
                 break;
         }
 

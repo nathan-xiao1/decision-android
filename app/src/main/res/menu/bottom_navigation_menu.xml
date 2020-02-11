@@ -18,6 +18,11 @@
             android:icon="@drawable/ic_access_time_black_24dp"
             android:title="@string/menu_item_time" />
 
+        <item
+            android:id="@+id/dateMenuItem"
+            android:icon="@drawable/ic_event_black_24dp"
+            android:title="@string/menu_item_date" />
+
         <item android:title="Numbers">
 
             <menu>
