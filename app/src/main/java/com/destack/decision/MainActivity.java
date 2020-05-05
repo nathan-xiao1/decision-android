@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
 
-
     }
 
     @Override
@@ -85,10 +84,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new DateFragment();
                 break;
         }
-
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).commit();
         drawerLayout.closeDrawers();
         return true;
     }
-
 }

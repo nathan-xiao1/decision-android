@@ -2,10 +2,9 @@
     <string name="app_name">Decision</string>
 
     <string name="yes_no_title">Yes/No</string>
-    <string name="yes_no_placeholder" />
+    <string name="yes_no_placeholder">Click Button to Start</string>
 
     <string name="choice_title">Choice</string>
-    <string name="choice_placeholder">Enter choice</string>
     <string name="choice_reset_button">Reset</string>
     <string name="choice_decide_button">Decide</string>
     <string name="choice_add_button">Add Row</string>
@@ -16,6 +15,7 @@
     <string name="menu_item_rng">Number</string>
     <string name="menu_item_rsg">Number Set</string>
     <string name="menu_item_time">Time</string>
+    <string name="menu_item_date">Date</string>
 
     <string name="rng_title">Number Generator</string>
     <string name="rng_generate">Generate</string>
@@ -39,10 +39,7 @@
     <string name="time_default_max">23:59</string>
     <string name="time_mode_text">24-Hour</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="date_default_min">01/01/2000</string>
     <string name="date_default_max">01/01/2020</string>
-    <string name="menu_item_date">Date</string>
 
 </resources>

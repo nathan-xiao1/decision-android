@@ -52,8 +52,6 @@ public class TimeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
         // Set the default times
         min = get24HrTime("00:00");
         max = get24HrTime("23:59");
@@ -122,11 +120,11 @@ public class TimeFragment extends Fragment {
     }
 
     private int getHour(Date date) {
-        return Integer.valueOf(formatHour.format(date));
+        return Integer.parseInt(formatHour.format(date));
     }
 
     private int getMinute(Date date) {
-        return Integer.valueOf(formatMinute.format(date));
+        return Integer.parseInt(formatMinute.format(date));
     }
 
     private void generate() {

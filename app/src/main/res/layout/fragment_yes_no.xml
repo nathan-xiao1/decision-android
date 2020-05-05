@@ -13,10 +13,10 @@
         android:id="@+id/yes_no_textview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center"
         android:layout_weight="1"
+        android:gravity="center"
         android:text="@string/yes_no_placeholder"
-        android:textSize="72sp" />
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/yes_no_generate_button"

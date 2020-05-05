@@ -80,6 +80,7 @@ public class YesNoFragment extends Fragment {
     private void displayResult(TextView textView) {
         textView.startAnimation(fadeOut);
         textView.setText(yesOrNo ? "Yes" : "No");
+        textView.setTextSize(72);
         textView.startAnimation(fadeIn);
         textView.setTextColor(yesOrNo ? getResources().getColor(R.color.colorYes) :
                 getResources().getColor(R.color.colorNo));

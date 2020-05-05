@@ -53,8 +53,6 @@ public class RNGFragment extends Fragment {
         view.findViewById(R.id.rng_generate_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //int current = Integer.valueOf(resultTextView.getText().toString());
-                //startCountAnimation(resultTextView, current, getRandomNumber());
                 verifyInput();
                 startFadeAnimation(resultTextView, String.valueOf(getRandomNumber()));
             }
@@ -90,23 +88,6 @@ public class RNGFragment extends Fragment {
             max = temp;
         }
         return min + ((long) (new Random().nextDouble() * (max - min)));
-    }
-
-    /**
-     * Set text and play 'counting' Animation
-     * @param textView the TextView for the text
-     * @param start the initial/starting value
-     * @param end the final/ending value
-     */
-    private void startCountAnimation(final TextView textView, int start, int end) {
-        ValueAnimator animator = ValueAnimator.ofInt(start, end);
-        animator.setDuration(150);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            public void onAnimationUpdate(ValueAnimator animation) {
-                textView.setText(animation.getAnimatedValue().toString());
-            }
-        });
-        animator.start();
     }
 
     /**
